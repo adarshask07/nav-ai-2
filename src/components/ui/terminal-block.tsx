@@ -27,17 +27,17 @@ const TerminalBlock: React.FC = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full max-w-md mx-auto font-mono text-xs md:text-sm leading-relaxed">
-      <div className="rounded-t-lg bg-[#1e1e1e] px-4 py-2 flex items-center gap-2 border-b border-neutral-800">
-        <div className="w-3 h-3 rounded-full bg-red-500"></div>
-        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-        <div className="w-3 h-3 rounded-full bg-green-500"></div>
-        <span className="ml-2 text-neutral-500 text-xs">gov_module.exe</span>
+    <div ref={containerRef} className="w-full max-w-md mx-auto font-mono text-[10px] md:text-sm leading-relaxed scale-90 md:scale-100">
+      <div className="rounded-t-lg bg-[#1e1e1e] px-3 md:px-4 py-1.5 md:py-2 flex items-center gap-2 border-b border-neutral-800">
+        <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-red-500"></div>
+        <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-yellow-500"></div>
+        <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-green-500"></div>
+        <span className="ml-2 text-neutral-500 text-[8px] md:text-xs">gov_module.exe</span>
       </div>
-      <div className="bg-[#0B1121]/90 backdrop-blur p-6 rounded-b-lg border border-white/10 h-[300px] overflow-hidden flex flex-col shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+      <div className="bg-[#0B1121]/90 backdrop-blur p-3 md:p-6 rounded-b-lg border border-white/10 h-[220px] md:h-[300px] overflow-y-auto flex flex-col shadow-[0_0_30px_rgba(0,0,0,0.5)] custom-scrollbar">
         {LOGS.slice(0, lines).map((log, i) => (
-          <div key={i} className="mb-2 animate-fade-in">
-            <span className="text-neutral-500 mr-2">
+          <div key={i} className="mb-1.5 md:mb-2 animate-fade-in">
+            <span className="text-neutral-500 mr-2 text-[8px] md:text-xs">
               {new Date().toLocaleTimeString()}
             </span>
             {log.type === 'info' && <span className="text-blue-400 mr-2">[INFO]</span>}

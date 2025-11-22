@@ -53,20 +53,56 @@ const AgentReveal: React.FC = () => {
     <section ref={sectionRef} className="relative w-full bg-gradient-agent text-white overflow-visible">
       <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row">
 
-        <div className="w-full md:w-1/2 py-[10vh] px-6 md:px-20 relative z-10">
-          <div className="mb-[15vh]">
+        {/* Mobile Sticky Visual Header */}
+        <div className="md:hidden sticky top-0 w-full h-[40vh] z-30 bg-[#0B1121] border-b border-white/10 shadow-2xl overflow-hidden">
+          <div className="h-8 border-b border-white/10 flex items-center justify-between px-4 bg-black/20 z-20 relative">
+            <div className="flex gap-1.5">
+              <div className="w-2 h-2 rounded-full bg-red-500/20 border border-red-500"></div>
+              <div className="w-2 h-2 rounded-full bg-yellow-500/20 border border-yellow-500"></div>
+              <div className="w-2 h-2 rounded-full bg-green-500/20 border border-green-500"></div>
+            </div>
+            <div className="font-mono text-[10px] text-neutral-500 uppercase tracking-widest truncate max-w-[150px]">
+              Module: {AGENT_FEATURES[activeStep - 1].title}
+            </div>
+          </div>
+
+          <div className="relative w-full h-[calc(100%-2rem)] overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeStep}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 0.4 }}
+                className="w-full h-full"
+              >
+                {activeStep === 1 && <AgentCard />}
+                {activeStep === 2 && <WorkspacesSection />}
+                {activeStep === 3 && <ConnectivityLayer />}
+                {activeStep === 4 && (
+                  <div className="flex items-center justify-center h-full w-full">
+                    <TerminalBlock />
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        <div className="w-full md:w-1/2 py-[5vh] md:py-[10vh] px-6 md:px-20 relative z-10">
+          <div className="mb-[10vh] md:mb-[15vh]">
             <h3 className="text-brand-cyan font-mono text-sm tracking-widest mb-4 uppercase">
               <TextReveal text="System Architecture" />
             </h3>
-            <h2 className="text-5xl md:text-7xl font-display font-bold leading-[0.9] mb-8 text-white">
+            <h2 className="text-4xl md:text-7xl font-display font-bold leading-[0.9] mb-8 text-white">
               INTELLIGENCE <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-violet">REDEFINED.</span>
             </h2>
-            <p className="text-xl text-neutral-400 max-w-md font-light">
+            <p className="text-lg md:text-xl text-neutral-400 max-w-md font-light">
               Bridge the gap between simple chatbots and autonomous, policy-compliant AI workforces.
             </p>
           </div>
 
-          <div className="flex flex-col gap-[70vh] pb-[20vh]">
+          <div className="flex flex-col gap-[60vh] md:gap-[70vh] pb-[20vh]">
             {AGENT_FEATURES.map((feature) => (
               <div key={feature.id} className="agent-text-block group relative z-20">
                 <div className="flex items-center gap-4 mb-6">
@@ -77,7 +113,7 @@ const AgentReveal: React.FC = () => {
                     0{feature.id} // {feature.title}
                   </span>
                 </div>
-                <p className="text-3xl md:text-4xl font-display font-medium text-neutral-400 group-hover:text-white transition-colors duration-500 leading-tight">
+                <p className="text-2xl md:text-4xl font-display font-medium text-neutral-400 group-hover:text-white transition-colors duration-500 leading-tight">
                   {feature.description}
                 </p>
               </div>

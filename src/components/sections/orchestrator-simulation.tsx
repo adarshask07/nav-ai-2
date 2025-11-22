@@ -100,11 +100,11 @@ const OrchestratorSimulation: React.FC = () => {
         </p>
       </div>
 
-      <div className="relative w-[95vw] max-w-[1200px] aspect-[16/9] md:aspect-[2/1] bg-brand-dark/50 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm overflow-hidden">
+      <div className="relative w-[95vw] max-w-[1200px] min-h-[600px] md:aspect-[2/1] bg-brand-dark/50 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm overflow-hidden flex flex-col md:block p-6 md:p-0 gap-8 md:gap-0">
 
         <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#8B5CF620_1px,transparent_1px),linear-gradient(to_bottom,#8B5CF620_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
-        <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden md:block" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
             <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#22D3EE" stopOpacity="0.1" />
@@ -133,10 +133,11 @@ const OrchestratorSimulation: React.FC = () => {
 
         <div
           ref={packetRef}
-          className="absolute w-3 h-3 rounded-full bg-white shadow-[0_0_15px_white] z-20 opacity-0 pointer-events-none"
+          className="absolute w-3 h-3 rounded-full bg-white shadow-[0_0_15px_white] z-20 opacity-0 pointer-events-none hidden md:block"
         ></div>
 
-        <div className={`absolute left-[10%] top-1/2 -translate-y-1/2 w-64 p-6 rounded-xl border transition-all duration-500 z-10 bg-brand-navy
+        {/* Orchestrator Node */}
+        <div className={`relative md:absolute md:left-[10%] md:top-1/2 md:-translate-y-1/2 w-full md:w-64 p-6 rounded-xl border transition-all duration-500 z-10 bg-brand-navy
           ${phase === 'thinking' || phase === 'handoff' ? 'border-brand-cyan shadow-[0_0_30px_rgba(34,211,238,0.3)]' : 'border-white/10'}`}>
           <div className="flex items-center gap-4 mb-4">
             <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${phase === 'thinking' ? 'bg-brand-cyan text-brand-navy' : 'bg-white/10 text-white'}`}>
@@ -153,7 +154,13 @@ const OrchestratorSimulation: React.FC = () => {
           </div>
         </div>
 
-        <div className="absolute right-[10%] top-[20%] w-56 p-4 rounded-xl border border-white/10 bg-brand-navy opacity-50">
+        {/* Mobile Connector */}
+        <div className="md:hidden flex justify-center -my-4 z-0">
+          <div className={`w-0.5 h-12 bg-gradient-to-b from-brand-cyan/50 to-brand-violet/50 ${phase !== 'idle' ? 'opacity-100' : 'opacity-20'}`}></div>
+        </div>
+
+        {/* Researcher Node */}
+        <div className="relative md:absolute md:right-[10%] md:top-[20%] w-full md:w-56 p-4 rounded-xl border border-white/10 bg-brand-navy opacity-50">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
               <Database className="w-5 h-5 text-neutral-400" />
@@ -165,7 +172,13 @@ const OrchestratorSimulation: React.FC = () => {
           </div>
         </div>
 
-        <div className={`absolute right-[10%] top-[60%] w-56 p-4 rounded-xl border transition-all duration-500 bg-brand-navy
+        {/* Mobile Connector */}
+        <div className="md:hidden flex justify-center -my-4 z-0">
+          <div className={`w-0.5 h-12 bg-gradient-to-b from-brand-violet/50 to-brand-violet/20 ${activeWorker === 'writer' ? 'opacity-100' : 'opacity-20'}`}></div>
+        </div>
+
+        {/* Writer Node */}
+        <div className={`relative md:absolute md:right-[10%] md:top-[60%] w-full md:w-56 p-4 rounded-xl border transition-all duration-500 bg-brand-navy
            ${activeWorker === 'writer' ? 'border-brand-violet shadow-[0_0_30px_rgba(139,92,246,0.3)] opacity-100' : 'border-white/10 opacity-50'}`}>
           <div className="flex items-center gap-3">
             <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeWorker === 'writer' ? 'bg-brand-violet text-white' : 'bg-white/5 text-neutral-400'}`}>
@@ -185,7 +198,7 @@ const OrchestratorSimulation: React.FC = () => {
           )}
         </div>
 
-        <div className={`absolute left-[12%] top-[15%] md:left-[30%] md:top-[55%] w-80 md:w-96 p-1 rounded-lg backdrop-blur-md transition-all duration-500 ${phase === 'idle' || phase === 'input' ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
+        <div className={`relative md:absolute md:left-[12%] md:top-[15%] md:md:left-[30%] md:md:top-[55%] w-full md:w-96 p-1 rounded-lg backdrop-blur-md transition-all duration-500 ${phase === 'idle' || phase === 'input' ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
           <div className="bg-black/80 rounded-lg border border-white/10 shadow-2xl overflow-hidden">
             <div className="h-8 bg-white/5 flex items-center px-3 gap-2 border-b border-white/5">
               <div className="w-2 h-2 rounded-full bg-red-500"></div>

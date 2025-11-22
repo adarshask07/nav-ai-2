@@ -34,7 +34,7 @@ const EcosystemSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full h-[300vh] bg-gradient-ecosystem border-t border-white/5 overflow-clip">
+    <section ref={containerRef} className="relative w-full h-[200vh] md:h-[300vh] bg-gradient-ecosystem border-t border-white/5 overflow-clip">
 
       <div className="sticky top-0 h-screen w-full overflow-hidden border-t border-white/5 flex flex-col justify-center">
 

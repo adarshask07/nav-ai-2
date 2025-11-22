@@ -101,13 +101,13 @@ const ArchitectureGrid: React.FC = () => {
       {/* Header - Fixed Position within Pinned Section */}
       <div className="container mx-auto px-6 mb-16 relative z-10">
         <h2 className="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tight">
-          SYSTEM{" "}
+          INTELLIGENCE{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-violet">
-            ARCHITECTURE
+            ORCHESTRATED
           </span>
         </h2>
         <p className="text-xl text-neutral-400 max-w-2xl leading-relaxed">
-          A rigid architectural framework for autonomous enterprise workforces.
+          A flexible and extensible architecture for autonomous enterprise workforces.
           You define the logic. The agents execute the labor.
         </p>
       </div>
