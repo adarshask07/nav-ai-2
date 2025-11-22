@@ -89,7 +89,7 @@ const OrchestratorSimulation: React.FC = () => {
   };
 
   return (
-    <section className="relative z-30 w-full min-h-screen bg-brand-navy flex flex-col items-center justify-center py-20 overflow-hidden border-t border-white/5">
+    <section className="relative z-30 w-full min-h-screen bg-gradient-orchestrator flex flex-col items-center justify-center py-20 overflow-hidden border-t border-white/5">
 
       <div className="text-center mb-12 z-10 px-4">
         <h2 className="text-4xl md:text-6xl font-display font-bold mb-4 text-white">
